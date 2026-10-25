@@ -1,0 +1,1796 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>موسوعة HTML - الصف التاسع | مدرسة هاجر المتوسطة بنات - المعلمة وسام مخلوف</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Fira+Code:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Tajawal", "sans-serif"],
+              mono: ["Fira Code", "monospace"],
+            },
+            colors: {
+              brand: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Tajawal", sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e293b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #475569;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #64748b;
+      }
+      /* Flip Card Effect */
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      .transform-style-3d {
+        transform-style: preserve-3d;
+        transition: transform 0.6s ease;
+      }
+      .backface-hidden {
+        backface-visibility: hidden;
+      }
+      .rotate-y-180 {
+        transform: rotateY(180deg);
+      }
+      /* Code Editor Style */
+      .code-input {
+        font-family: "Fira Code", monospace;
+        tab-size: 2;
+      }
+      .bg-grid {
+        background-size: 30px 30px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          );
+      }
+    </style>
+    <style id="light-theme-overrides">
+      :root { color-scheme: light; }
+      body { background: linear-gradient(180deg,#f8fbff 0%,#eef6ff 100%) !important; color:#1f2937 !important; }
+      .bg-grid { background-image: linear-gradient(to right,rgba(14,116,144,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(14,116,144,.05) 1px,transparent 1px) !important; }
+      header { background:rgba(255,255,255,.96) !important; border-color:#dbeafe !important; box-shadow:0 4px 18px rgba(15,23,42,.06); }
+      nav { background:#f8fbff !important; border-color:#dbeafe !important; }
+      .bg-slate-950, .bg-slate-950\/60, .bg-slate-950\/80, .bg-slate-950\/90 { background-color:#f8fbff !important; }
+      .bg-slate-900, .bg-slate-900\/80, .bg-slate-900\/90 { background-color:#fff !important; }
+      .bg-slate-800, .bg-slate-800\/80, .bg-slate-800\/90, .bg-slate-800\/60 { background-color:#fff !important; }
+      .bg-slate-700, .bg-slate-700\/60 { background-color:#eaf3fb !important; }
+      .border-slate-800, .border-slate-800\/80, .border-slate-700, .border-slate-700\/80, .border-slate-700\/60, .border-slate-700\/50, .border-slate-700\/40 { border-color:#d7e6f3 !important; }
+      .text-white, .text-slate-100, .text-slate-200 { color:#17324d !important; }
+      .text-slate-300 { color:#425b70 !important; }
+      .text-slate-400, .text-slate-500, .text-slate-600 { color:#64748b !important; }
+      .text-indigo-400, .text-indigo-300 { color:#0e7490 !important; }
+      .text-emerald-400, .text-emerald-300 { color:#047857 !important; }
+      .text-purple-300, .text-purple-400 { color:#7c3aed !important; }
+      .text-amber-300, .text-amber-400 { color:#a16207 !important; }
+      .bg-indigo-600 { background-color:#0891b2 !important; }
+      .bg-indigo-500\/20, .bg-indigo-500\/10 { background-color:#e0f2fe !important; }
+      .border-indigo-500, .border-indigo-500\/50, .border-indigo-500\/40, .border-indigo-500\/30, .border-indigo-500\/20 { border-color:#67c5df !important; }
+      .hover\:border-indigo-500:hover, .hover\:border-indigo-400:hover { border-color:#0891b2 !important; }
+      .hover\:bg-slate-700:hover, .hover\:bg-slate-600:hover { background-color:#dcecf8 !important; }
+      .hover\:text-slate-200:hover { color:#0f172a !important; }
+      #sec-reference > div:first-child { background:linear-gradient(135deg,#ecfeff 0%,#eef2ff 55%,#fff7ed 100%) !important; border-color:#bae6fd !important; box-shadow:0 14px 35px rgba(14,116,144,.08); }
+      #sec-reference > div:first-child h2 { color:#164e63 !important; }
+      #sec-reference > div:first-child p { color:#475569 !important; }
+      #tagsGrid > div, #sec-quiz > div, #sec-matching > div, #sec-flashcards > div { box-shadow:0 8px 24px rgba(15,23,42,.05); }
+      .quiz-opt-btn { background:#f8fbff !important; color:#17324d !important; border-color:#cbddeb !important; }
+      .quiz-opt-btn:hover { border-color:#0891b2 !important; background:#eefaff !important; }
+      footer { background:#fff !important; border-color:#dbeafe !important; color:#475569 !important; }
+      /* تحسين وضوح الوجه الخلفي لبطاقات الحفظ */
+      #flashcardBack {
+        background: linear-gradient(135deg,#ffffff 0%,#eef8ff 58%,#f5f3ff 100%) !important;
+        border: 2px solid #b9dff0 !important;
+        box-shadow: inset 0 0 0 1px rgba(14,116,144,.04);
+      }
+      #flashcardBack > span { color:#52657a !important; }
+      #flashcardTranslation { color:#0f766e !important; }
+      #flashcardUsage { color:#1e293b !important; font-weight:600; }
+      #flashcardTypeBadge {
+        background:#e0f2fe !important;
+        color:#5b21b6 !important;
+        border:1px solid #bfdbfe !important;
+      }
+    </style>
+
+  </head>
+  <body
+    class="min-h-screen flex flex-col bg-slate-900 bg-grid text-slate-100 selection:bg-indigo-500 selection:text-white"
+  >
+    <!-- Top Header -->
+    <header
+      class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30"
+          >
+            <i class="fa-solid me-0 fa-code text-white text-xl"></i>
+          </div>
+          <div>
+            <h1
+              class="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400"
+            >
+              وسوم لغة HTML التفاعلية
+            </h1>
+            <p class="text-xs text-slate-400">
+              مخصصة لطلاب الصف التاسع المتوسط | مادة الحاسوب - دولة الكويت
+            </p>
+            <p class="text-[11px] text-indigo-300 mt-0.5 font-semibold">
+              مدرسة هاجر المتوسطة بنات · المعلمة: وسام مخلوف
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats Badge -->
+        <div
+          class="hidden md:flex items-center gap-4 bg-slate-800/80 px-4 py-1.5 rounded-full border border-slate-700/60"
+        >
+          <div
+            class="flex items-center gap-2 text-amber-400 text-sm font-semibold"
+          >
+            <i class="fa-solid fa-star"></i>
+            <span id="userPoints">0</span> نقطة
+          </div>
+          <div class="h-4 w-px bg-slate-700"></div>
+          <div
+            class="flex items-center gap-2 text-emerald-400 text-sm font-semibold"
+          >
+            <i class="fa-solid fa-[#fa-award] fa-award"></i>
+            <span id="masteryPercent">0%</span> الإتقان
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="bg-slate-950/60 border-t border-slate-800/80 overflow-x-auto">
+        <div class="max-w-7xl mx-auto px-4 flex gap-1 sm:gap-2">
+          <button
+            onclick="switchTab('reference')"
+            id="tab-reference"
+            class="tab-btn py-3 px-4 text-sm font-medium border-b-2 border-indigo-500 text-indigo-400 flex items-center gap-2 whitespace-nowrap transition-all"
+          >
+            <i class="fa-solid fa-book-open"></i> الموسوعة والشرح
+          </button>
+          <button
+            onclick="switchTab('flashcards')"
+            id="tab-flashcards"
+            class="tab-btn py-3 px-4 text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap transition-all"
+          >
+            <i class="fa-solid fa-layer-group"></i> بطاقات الحفظ
+          </button>
+          <button
+            onclick="switchTab('matching')"
+            id="tab-matching"
+            class="tab-btn py-3 px-4 text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap transition-all"
+          >
+            <i class="fa-solid fa-[#fa-puzzle-piece] fa-puzzle-piece"></i> لعبة
+            المطابقة
+          </button>
+          <button
+            onclick="switchTab('quiz')"
+            id="tab-quiz"
+            class="tab-btn py-3 px-4 text-sm font-medium border-b-2 border-transparent text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap transition-all"
+          >
+            <i class="fa-solid fa-vial-circle-check"></i> الاختبار التقييمي
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+      <!-- TAB 1: REFERENCE / ENCYCLOPEDIA -->
+      <section id="sec-reference" class="space-y-6">
+        <!-- Hero banner -->
+        <div
+          class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-900/60 via-purple-900/40 to-slate-900 border border-indigo-500/30 p-6 sm:p-8"
+        >
+          <div class="max-w-3xl space-y-3 relative z-10">
+            <span
+              class="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/30"
+            >
+              منهج الصف التاسع المتوسط · مدرسة هاجر المتوسطة بنات
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              موسوعة وسوم HTML المقررة للصف التاسع
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              راجعي الوسوم المقررة وتدربي على وظيفتها وصياغتها وأمثلتها العملية،
+              مع بطاقات حفظ ولعبة مطابقة واختبار تقويمي. إعداد المعلمة: وسام مخلوف.
+            </p>
+          </div>
+          <div
+            class="absolute top-1/2 left-6 -translate-y-1/2 text-slate-800/40 text-9xl font-mono font-black pointer-events-none hidden lg:block select-none"
+          >
+            &lt;/&gt;
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div id="categoryFilter" class="flex flex-wrap gap-2 pb-2">
+          <!-- Dynamically generated or static buttons -->
+        </div>
+
+        <!-- Tags Grid -->
+        <div
+          id="tagsGrid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+          <!-- Dynamic Tag Cards injected here -->
+        </div>
+      </section>
+
+      <!-- TAB 2: FLASHCARDS -->
+      <section id="sec-flashcards" class="hidden space-y-6">
+        <div class="text-center max-w-xl mx-auto space-y-2">
+          <h2 class="text-2xl font-bold text-white">بطاقات الحفظ الذاتي</h2>
+          <p class="text-slate-400 text-sm">
+            انقر على البطاقة لكشف الوجه الآخر. اختبر حفظك للوسوم المخصصة للصف
+            التاسع.
+          </p>
+
+          <!-- Progress -->
+          <div
+            class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden mt-4"
+          >
+            <div
+              id="flashcardBar"
+              class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full w-0 transition-all duration-300"
+            ></div>
+          </div>
+          <div class="text-xs text-slate-400 flex justify-between">
+            <span id="flashcardIndexText">بطاقة 1 من 22</span>
+            <span id="flashcardMasteredText">تم الحفظ: 0</span>
+          </div>
+        </div>
+
+        <!-- Card View -->
+        <div class="max-w-md mx-auto perspective-1000 my-8">
+          <div
+            id="flashcardElement"
+            onclick="flipFlashcard()"
+            class="transform-style-3d cursor-pointer relative w-full h-72 rounded-2xl bg-slate-800 border-2 border-indigo-500/40 shadow-2xl p-6 flex flex-col justify-between items-center text-center group hover:border-indigo-400 transition-all"
+          >
+            <!-- Front Side -->
+            <div
+              id="flashcardFront"
+              class="backface-hidden w-full h-full flex flex-col justify-center items-center space-y-4"
+            >
+              <span
+                id="flashcardCategory"
+                class="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-full border border-indigo-500/20"
+              >
+                الوسوم الأساسية
+              </span>
+              <div
+                id="flashcardTag"
+                class="text-3xl font-mono font-bold text-amber-300 bg-slate-900/80 px-6 py-3 rounded-xl border border-slate-700 dir-ltr"
+              >
+                &lt;html&gt;
+              </div>
+              <p class="text-slate-400 text-xs flex items-center gap-1">
+                <i class="fa-solid fa-arrows-rotate"></i> اضغط لقلب البطاقة
+                ومعرفة الوظيفة
+              </p>
+            </div>
+
+            <!-- Back Side -->
+            <div
+              id="flashcardBack"
+              class="backface-hidden rotate-y-180 absolute inset-0 p-6 flex flex-col justify-center items-center space-y-3 bg-gradient-to-br from-slate-800 to-indigo-950 rounded-2xl"
+            >
+              <span class="text-xs text-slate-400 font-semibold"
+                >الترجمة والوظيفة</span
+              >
+              <h3
+                id="flashcardTranslation"
+                class="text-xl font-bold text-emerald-400"
+              >
+                وسم الجذر
+              </h3>
+              <p
+                id="flashcardUsage"
+                class="text-sm text-slate-200 leading-relaxed max-w-xs"
+              >
+                العنصر الجذر للصفحة ويحتوي على جميع العناصر الأخرى.
+              </p>
+              <div
+                id="flashcardTypeBadge"
+                class="text-xs px-2.5 py-1 bg-slate-900 rounded text-purple-300 font-mono"
+              >
+                له وسم إغلاق
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex justify-center items-center gap-4 max-w-md mx-auto">
+          <button
+            onclick="nextFlashcard(false)"
+            class="flex-1 py-3 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-xmark"></i> أحتاج مراجعة
+          </button>
+          <button
+            onclick="nextFlashcard(true)"
+            class="flex-1 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-check"></i> حفظتها ببراعة!
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 3: MATCHING GAME -->
+      <section id="sec-matching" class="hidden space-y-6">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4 bg-slate-800/60 p-4 rounded-xl border border-slate-700/60"
+        >
+          <div>
+            <h2 class="text-xl font-bold text-white">لعبة ربط الوسم بوظيفته</h2>
+            <p class="text-xs text-slate-400">
+              انقر على الوسم بالطرف الأيمن ثم اختر الوظيفة المناسبة له من الطرف
+              الأيسر.
+            </p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div
+              class="text-center px-4 py-1.5 bg-slate-900 rounded-lg border border-slate-700"
+            >
+              <span class="text-xs text-slate-400 block">الوقت</span>
+              <span
+                id="matchingTimer"
+                class="font-mono text-lg font-bold text-amber-400"
+                >00:00</span
+              >
+            </div>
+            <button
+              onclick="initMatchingGame()"
+              class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg text-sm transition-all shadow-md"
+            >
+              <i class="fa-solid fa-rotate-right me-1"></i> إعادة اللعب
+            </button>
+          </div>
+        </div>
+
+        <!-- Matching Cards Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Left Column: Tags -->
+          <div class="space-y-3">
+            <h3
+              class="text-sm font-bold text-indigo-400 mb-2 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-code"></i> قائمة الوسوم (HTML Tags)
+            </h3>
+            <div id="matchingTagsList" class="space-y-2.5">
+              <!-- Dynamic Tags Cards -->
+            </div>
+          </div>
+
+          <!-- Right Column: Meanings -->
+          <div class="space-y-3">
+            <h3
+              class="text-sm font-bold text-purple-400 mb-2 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-list-check"></i> الاستخدام والوظيفة
+            </h3>
+            <div id="matchingMeaningsList" class="space-y-2.5">
+              <!-- Dynamic Meanings Cards -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: LIVE CODE EDITOR & MISSIONS -->
+
+      <!-- TAB 5: QUIZ MODE -->
+      <section id="sec-quiz" class="hidden space-y-6">
+        <div
+          id="quizStartCard"
+          class="max-w-2xl mx-auto bg-slate-800 border border-slate-700 p-8 rounded-2xl text-center space-y-6"
+        >
+          <div
+            class="w-16 h-16 bg-indigo-600/20 text-indigo-400 rounded-full flex items-center justify-center mx-auto text-3xl"
+          >
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="space-y-2">
+            <h2 class="text-2xl font-bold text-white">
+              اختبار الشمول والتميز - وسوم HTML
+            </h2>
+            <p class="text-slate-300 text-sm">
+              اختبار تفاعلي من 10 أسئلة لقياس فهمك وحفظك للوسوم المقررة بالصف
+              التاسع.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-3 gap-3 text-center py-4 border-y border-slate-700/60"
+          >
+            <div>
+              <span class="block text-xl font-bold text-amber-400">10</span>
+              <span class="text-xs text-slate-400">أسئلة متنوعة</span>
+            </div>
+            <div>
+              <span class="block text-xl font-bold text-indigo-400">100</span>
+              <span class="text-xs text-slate-400">نقطة مجانية</span>
+            </div>
+            <div>
+              <span class="block text-xl font-bold text-emerald-400">فوري</span>
+              <span class="text-xs text-slate-400">تصحيح تلقائي</span>
+            </div>
+          </div>
+          <button
+            onclick="startQuiz()"
+            class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5"
+          >
+            ابدأ الاختبار الآن
+          </button>
+        </div>
+
+        <!-- Quiz Running Box -->
+        <div
+          id="quizActiveBox"
+          class="hidden max-w-2xl mx-auto bg-slate-800 border border-slate-700 p-6 sm:p-8 rounded-2xl space-y-6"
+        >
+          <!-- Header -->
+          <div
+            class="flex items-center justify-between border-b border-slate-700/80 pb-4"
+          >
+            <span
+              id="quizQuestionCount"
+              class="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20"
+            >
+              السؤال 1 من 10
+            </span>
+            <span
+              id="quizScoreBadge"
+              class="text-xs font-semibold text-amber-400"
+            >
+              النقاط: 0
+            </span>
+          </div>
+
+          <!-- Question Title -->
+          <div class="space-y-2">
+            <h3
+              id="quizQuestionTitle"
+              class="text-lg font-bold text-white leading-relaxed"
+            >
+              ما هو الوسم الذي يُستخدم لإضافة سطر فاصل أفقي؟
+            </h3>
+          </div>
+
+          <!-- Options -->
+          <div id="quizOptionsContainer" class="space-y-3">
+            <!-- Dynamic Buttons -->
+          </div>
+
+          <!-- Feedback Area -->
+          <div
+            id="quizFeedback"
+            class="hidden p-4 rounded-xl text-sm leading-relaxed"
+          ></div>
+
+          <!-- Footer button -->
+          <div class="pt-4 border-t border-slate-700 flex justify-end">
+            <button
+              id="quizNextBtn"
+              onclick="nextQuestion()"
+              class="hidden px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm transition-all"
+            >
+              السؤال التالي <i class="fa-solid fa-arrow-left ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Result Modal / Card -->
+        <div
+          id="quizResultBox"
+          class="hidden max-w-xl mx-auto bg-slate-800 border border-slate-700 p-8 rounded-2xl text-center space-y-6"
+        >
+          <div
+            id="quizBadgeIcon"
+            class="w-20 h-20 rounded-full flex items-center justify-center mx-auto text-4xl shadow-xl"
+          ></div>
+
+          <div class="space-y-1">
+            <h3 id="quizResultTitle" class="text-2xl font-bold text-white">
+              ممتاز يا بطل!
+            </h3>
+            <p id="quizResultSubtitle" class="text-sm text-slate-400">
+              لقد أكملت جميع الأسئلة بنجاح.
+            </p>
+          </div>
+
+          <div
+            class="bg-slate-900/80 p-4 rounded-xl border border-slate-700/60 flex justify-around items-center"
+          >
+            <div>
+              <span class="text-xs text-slate-400 block">النتيجة</span>
+              <span
+                id="quizFinalScore"
+                class="text-2xl font-bold text-emerald-400"
+                >80%</span
+              >
+            </div>
+            <div class="h-8 w-px bg-slate-700"></div>
+            <div>
+              <span class="text-xs text-slate-400 block">الإجابات الصحيحة</span>
+              <span
+                id="quizFinalCorrect"
+                class="text-2xl font-bold text-indigo-400"
+                >8 / 10</span
+              >
+            </div>
+          </div>
+
+          <button
+            onclick="startQuiz()"
+            class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm transition-all"
+          >
+            إعادة الاختبار
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 6: GEMINI AI TUTOR -->
+    </main>
+
+    <!-- Tag Details Modal -->
+    <div
+      id="tagModal"
+      class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-slate-800 border border-slate-700 w-full max-w-lg rounded-2xl p-6 space-y-4 shadow-2xl relative"
+      >
+        <button
+          onclick="closeTagModal()"
+          class="absolute top-4 left-4 text-slate-400 hover:text-white text-lg"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center gap-3 border-b border-slate-700 pb-3">
+          <span
+            id="modalCategoryBadge"
+            class="px-2.5 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-300 font-semibold border border-indigo-500/30"
+          >
+            القسم
+          </span>
+          <h3
+            id="modalTagName"
+            class="text-2xl font-mono font-bold text-amber-300 dir-ltr"
+          >
+            &lt;tag&gt;
+          </h3>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div>
+            <span class="text-slate-400 text-xs block">الترجمة بالعربية:</span>
+            <p id="modalTagTranslation" class="font-bold text-white text-base">
+              عنوان الوسم
+            </p>
+          </div>
+          <div>
+            <span class="text-slate-400 text-xs block"
+              >الوظيفة والاستخدام:</span
+            >
+            <p id="modalTagUsage" class="text-slate-200 leading-relaxed"></p>
+          </div>
+          <div>
+            <span class="text-slate-400 text-xs block">نوع الوسم:</span>
+            <p id="modalTagType" class="text-purple-300 font-medium"></p>
+          </div>
+          <div>
+            <span class="text-slate-400 text-xs block mb-1">مثال تطبيقي:</span>
+            <pre
+              id="modalTagExample"
+              class="bg-slate-900 text-emerald-400 p-3 rounded-xl font-mono text-xs overflow-x-auto border border-slate-700 dir-ltr"
+            ></pre>
+          </div>
+        </div>
+        <div class="pt-2 flex justify-end">
+          <button
+            onclick="closeTagModal()"
+            class="px-5 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-sm font-semibold transition-all"
+          >
+            إغلاق
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div
+      id="toast"
+      class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden transition-all duration-300"
+    >
+      <div
+        id="toastContent"
+        class="px-5 py-3 rounded-xl shadow-2xl border text-sm font-semibold flex items-center gap-3 bg-slate-800 border-indigo-500 text-white"
+      >
+        <i id="toastIcon" class="fa-solid fa-circle-info"></i>
+        <span id="toastMessage"></span>
+      </div>
+    </div>
+
+    <script>
+      // Comprehensive HTML Tags Data strictly matching the provided 9th Grade Infographic (by Mr. Saleh Al-Shamali)
+      const HTML_DATA = [
+        // 1. الوسوم الأساسية
+        {
+          id: "doctype",
+          category: "الوسوم الأساسية",
+          catId: 1,
+          tag: "<!DOCTYPE html>",
+          translation: "إعلان نوع المستند",
+          usage: "يحدد نوع المستند وإصدار HTML (HTML5).",
+          type: "وسم إعلان لا يحتاج إغلاق",
+          example: "<!DOCTYPE html>\n<html>\n ... \n</html>",
+          codeSnippet: "<!DOCTYPE html>",
+        },
+        {
+          id: "html",
+          category: "الوسوم الأساسية",
+          catId: 1,
+          tag: "<html>",
+          translation: "وسم الجذر",
+          usage: "العنصر الجذر للصفحة ويحتوي على جميع العناصر.",
+          type: "له وسم إغلاق </html>",
+          example: '<html lang="ar">\n  <!-- محتوى الصفحة هنا -->\n</html>',
+          codeSnippet: "<html>\n  <body>مرحباً بك</body>\n</html>",
+        },
+        {
+          id: "head",
+          category: "الوسوم الأساسية",
+          catId: 1,
+          tag: "<head>",
+          translation: "رأس الصفحة",
+          usage:
+            "يحتوي على معلومات الصفحة (مثل العنوان والترميز والروابط الخارجية).",
+          type: "له وسم إغلاق </head>",
+          example: "<head>\n  <title>صفحتي الأولى</title>\n</head>",
+          codeSnippet: "<head><title>عنوان التجربة</title></head>",
+        },
+        {
+          id: "title",
+          category: "الوسوم الأساسية",
+          catId: 1,
+          tag: "<title>",
+          translation: "عنوان الصفحة",
+          usage: "يحدد عنوان الصفحة الذي يظهر في أعلى شريط المتصفح.",
+          type: "له وسم إغلاق </title>",
+          example: "<title>درس الوسوم - الصف التاسع</title>",
+          codeSnippet: "<title>موقعي الرائع</title>",
+        },
+        {
+          id: "body",
+          category: "الوسوم الأساسية",
+          catId: 1,
+          tag: "<body>",
+          translation: "جسم الصفحة",
+          usage:
+            "يحتوي على محتوى الصفحة المرئي للمستخدم (النصوص، الصور، الجدول...إلخ).",
+          type: "له وسم إغلاق </body>",
+          example: "<body>\n  <h1>أهلاً بكم</h1>\n</body>",
+          codeSnippet: "<body><h1>محتوى مرئي</h1></body>",
+        },
+
+        // 2. الوسوم التي لها وسم إغلاق
+        {
+          id: "h1",
+          category: "وسوم لها وسم إغلاق",
+          catId: 2,
+          tag: "<h1> ... </h1>",
+          translation: "عنوان رئيسي",
+          usage: "يستخدم لكتابة العناوين الرئيسية بإنشاء خط عريض وكبير.",
+          type: "مزدوج (وسم فتح ووسم إغلاق)",
+          example: "<h1>عنوان الدرس الأول</h1>",
+          codeSnippet:
+            '<h1 style="color:indigo;">أهلاً بكم في الصف التاسع</h1>',
+        },
+        {
+          id: "i",
+          category: "وسوم لها وسم إغلاق",
+          catId: 2,
+          tag: "<i> ... </i>",
+          translation: "نص مائل",
+          usage: "يستخدم لكتابة النص الخط المائل (Italic).",
+          type: "مزدوج (وسم فتح ووسم إغلاق)",
+          example: "<i>هذا النص مائل ومميز</i>",
+          codeSnippet: "<p>تعلم الويب <i>ممتع وسهل جداً</i></p>",
+        },
+        {
+          id: "b",
+          category: "وسوم لها وسم إغلاق",
+          catId: 2,
+          tag: "<b> ... </b>",
+          translation: "نص غامق",
+          usage: "يستخدم لكتابة النص الغامق العريض (Bold).",
+          type: "مزدوج (وسم فتح ووسم إغلاق)",
+          example: "<b>ملاحظة هامة جداً</b>",
+          codeSnippet: "<p>احرص على <b>حفظ الوسوم</b> جيداً</p>",
+        },
+        {
+          id: "p",
+          category: "وسوم لها وسم إغلاق",
+          catId: 2,
+          tag: "<p> ... </p>",
+          translation: "فقرة نصية",
+          usage: "يستخدم لإنشاء فقرة نصية مستقلة مع مسافة بادئة وخاتمة.",
+          type: "مزدوج (وسم فتح ووسم إغلاق)",
+          example:
+            "<p>لغة HTML هي لغة ترميز النص الفائق وتُبنى بها المواقع.</p>",
+          codeSnippet: "<p>تعتبر لغة HTML أصل بناء شبكة الإنترنت العالمية.</p>",
+        },
+        {
+          id: "pre",
+          category: "وسوم لها وسم إغلاق",
+          catId: 2,
+          tag: "<pre> ... </pre>",
+          translation: "نص منسق مسبقاً",
+          usage: "يعرض النص مع المحافظة على المسافات والأسطر كما تمت كتابتها داخل الكود.",
+          type: "مزدوج (وسم فتح ووسم إغلاق)",
+          example: "<pre>الاسم: سارة\nالصف: التاسع</pre>",
+          codeSnippet: "<pre>مدرسة هاجر\nالصف التاسع\nHTML</pre>",
+        },
+
+        // 3. الوسوم ذاتية الإغلاق
+        {
+          id: "br",
+          category: "الوسوم ذاتية الإغلاق",
+          catId: 3,
+          tag: "<br>",
+          translation: "كسر سطر",
+          usage:
+            "يستخدم لإضافة خط جديد (انتقال للسطر التالي دون الحاجة لوسم إغلاق).",
+          type: "ذاتي الإغلاق (Monad)",
+          example: "السطر الأول<br>السطر الثاني",
+          codeSnippet: "مرحباً بك<br>في عالم البرمجة",
+        },
+        {
+          id: "hr",
+          category: "الوسوم ذاتية الإغلاق",
+          catId: 3,
+          tag: "<hr>",
+          translation: "خط أفقي",
+          usage: "يستخدم لإضافة خط فاصل أفقي بين الأجزاء والمحتويات.",
+          type: "ذاتي الإغلاق (Monad)",
+          example: "<p>قسم 1</p><hr><p>قسم 2</p>",
+          codeSnippet: "<h3>العنوان</h3><hr><p>المضمون بعد الخط الفاصل</p>",
+        },
+
+        // 4. وسم الارتباط الشعبي
+        {
+          id: "a",
+          category: "وسم الارتباط الشعبي",
+          catId: 4,
+          tag: '<a href="..."> ... </a>',
+          translation: "رابط تشعبي",
+          usage:
+            "يحدد عنوان الرابط الذي ننتقل إليه عند الضغط عليه (صفحة أخرى أو موقع خارجي).",
+          type: "له وسم إغلاق </a>",
+          example: '<a href="https://www.google.com">موقع جوجل</a>',
+          codeSnippet:
+            '<a href="https://www.google.com" target="_blank">انقر هنا لزيارة جوجل</a>',
+        },
+
+        // 5. وسم الصور
+        {
+          id: "img",
+          category: "وسم الصور",
+          catId: 5,
+          tag: '<img src="..." alt="...">',
+          translation: "صورة",
+          usage:
+            "يحدد مسار الصورة (src) ونصاً بديلاً (alt) يُعرض في حال عدم ظهور الصورة.",
+          type: "ذاتي الإغلاق",
+          example: '<img src="image.jpg" alt="صورة توضيحية">',
+          codeSnippet:
+            '<img src="https://picsum.photos/300/150" alt="صورة توضيحية عشوائية">',
+        },
+
+        // 6. وسم القوائم
+        {
+          id: "ol",
+          category: "وسم القوائم",
+          catId: 6,
+          tag: "<ol> ... </ol>",
+          translation: "قائمة مرتبة",
+          usage: "تُستخدم لإنشاء قائمة مرتبة ومقسّمة بالأرقام (1, 2, 3...).",
+          type: "له وسم إغلاق </ol>",
+          example: "<ol>\n  <li>نص 1</li>\n  <li>نص 2</li>\n</ol>",
+          codeSnippet:
+            "<ol>\n  <li>الوسوم الأساسية</li>\n  <li>الوسوم المزدوجة</li>\n</ol>",
+        },
+        {
+          id: "ul",
+          category: "وسم القوائم",
+          catId: 6,
+          tag: "<ul> ... </ul>",
+          translation: "قائمة غير مرتبة",
+          usage: "تُستخدم لإنشاء قائمة غير مرتبة وتُعرض العناصر بنقاط دائرية.",
+          type: "له وسم إغلاق </ul>",
+          example: "<ul>\n  <li>تفاح</li>\n  <li>برتقال</li>\n</ul>",
+          codeSnippet: "<ul>\n  <li>تفاح</li>\n  <li>موز</li>\n</ul>",
+        },
+        {
+          id: "li",
+          category: "وسم القوائم",
+          catId: 6,
+          tag: "<li> ... </li>",
+          translation: "عنصر قائمة",
+          usage: "يستخدم لإضافة عنصر داخل قائمة مرتبة <ol> أو قائمة غير مرتبة <ul>.",
+          type: "له وسم إغلاق </li>",
+          example: "<li>عنصر من القائمة</li>",
+          codeSnippet: "<ul><li>HTML</li><li>CSS</li></ul>",
+        },
+
+        // 7. وسم الجداول
+        {
+          id: "table",
+          category: "وسم الجداول",
+          catId: 7,
+          tag: "<table> ... </table>",
+          translation: "جدول",
+          usage: "يحدد الهيكل العام للجدول لإنشاء جداول البيانات.",
+          type: "له وسم إغلاق </table>",
+          example: "<table>\n  <tr><th>الاسم</th></tr>\n</table>",
+          codeSnippet:
+            '<table border="1">\n  <tr><th>الاسم</th><th>الدرجة</th></tr>\n  <tr><td>أحمد</td><td>95</td></tr>\n</table>',
+        },
+        {
+          id: "caption",
+          category: "وسم الجداول",
+          catId: 7,
+          tag: "<caption> ... </caption>",
+          translation: "عنوان الجدول",
+          usage: "يستخدم لإضافة عنوان أو تسمية توضيحية لمحتوى الجدول.",
+          type: "له وسم إغلاق </caption>",
+          example: "<caption>قائمة حكام دولة الكويت</caption>",
+          codeSnippet: '<table border="1"><caption>جدول الدرجات</caption><tr><td>95</td></tr></table>',
+        },
+        {
+          id: "tr",
+          category: "وسم الجداول",
+          catId: 7,
+          tag: "<tr> ... </tr>",
+          translation: "صف الجدول",
+          usage: "يحدد صفاً أفقياً داخل الجدول (Table Row).",
+          type: "له وسم إغلاق </tr>",
+          example: "<tr><td>بيانات الصف</td></tr>",
+          codeSnippet: "<tr><td>خالد</td><td>88</td></tr>",
+        },
+        {
+          id: "td",
+          category: "وسم الجداول",
+          catId: 7,
+          tag: "<td> ... </td>",
+          translation: "خلية الجدول",
+          usage: "يحدد خلية بيانات داخل الصف في الجدول (Table Data).",
+          type: "له وسم إغلاق </td>",
+          example: "<td>أحمد</td>",
+          codeSnippet: "<td>قيمة الخلية</td>",
+        },
+        {
+          id: "th",
+          category: "وسم الجداول",
+          catId: 7,
+          tag: "<th> ... </th>",
+          translation: "عنوان الخلية",
+          usage:
+            "يُستخدم لعنوان العمود في أعلى الجدول ويظهر عادةً بخط غامق ومُوسَّط (Table Header).",
+          type: "له وسم إغلاق </th>",
+          example: "<th>الدرجة</th>",
+          codeSnippet: "<th>عنوان العمود</th>",
+        },
+
+        // 8. التعليقات
+        {
+          id: "comment",
+          category: "التعليقات",
+          catId: 8,
+          tag: "<!-- تعليق -->",
+          translation: "تعليق HTML",
+          usage: "يستخدم لإضافة ملاحظة داخل الكود لا تظهر للمستخدم في صفحة الويب.",
+          type: "صيغة تعليق خاصة لا تحتاج وسم إغلاق تقليدياً",
+          example: "<!-- هذا تعليق لا يظهر في المتصفح -->",
+          codeSnippet: "<!-- إعداد الطالبة: __________ -->\n<p>هذا النص يظهر في الصفحة.</p>",
+        },
+      ];
+
+      let currentPoints = parseInt(localStorage.getItem("html_points") || "0");
+      let masteredCount = parseInt(
+        localStorage.getItem("html_mastered") || "0",
+      );
+      let currentFlashcardIndex = 0;
+      let isCardFlipped = false;
+
+      // Matching game state
+      let matchingSelectedTag = null;
+      let matchingSelectedMeaning = null;
+      let matchingTimerInterval = null;
+      let matchingTimeSeconds = 0;
+
+      // Quiz State
+      let quizCurrentIndex = 0;
+      let quizScore = 0;
+      let quizQuestions = [];
+
+      window.onload = function () {
+        updateStatsUI();
+        renderCategoryFilters();
+        renderTagsGrid(HTML_DATA);
+        initFlashcards();
+      };
+
+      function updateStatsUI() {
+        document.getElementById("userPoints").innerText = currentPoints;
+        const percent = Math.round((masteredCount / HTML_DATA.length) * 100);
+        document.getElementById("masteryPercent").innerText = `${percent}%`;
+        localStorage.setItem("html_points", currentPoints);
+        localStorage.setItem("html_mastered", masteredCount);
+      }
+
+      function addPoints(pts) {
+        currentPoints += pts;
+        updateStatsUI();
+        try {
+          confetti({
+            particleCount: 25,
+            spread: 50,
+            origin: { y: 0.8 },
+          });
+        } catch (e) {}
+      }
+
+      function switchTab(tabId) {
+        const tabs = ["reference", "flashcards", "matching", "quiz"];
+        tabs.forEach((t) => {
+          const btn = document.getElementById(`tab-${t}`);
+          const sec = document.getElementById(`sec-${t}`);
+          if (t === tabId) {
+            btn.classList.add("border-indigo-500", "text-indigo-400");
+            btn.classList.remove("border-transparent", "text-slate-400");
+            sec.classList.remove("hidden");
+          } else {
+            btn.classList.remove("border-indigo-500", "text-indigo-400");
+            btn.classList.add("border-transparent", "text-slate-400");
+            sec.classList.add("hidden");
+          }
+        });
+
+        if (tabId === "matching") {
+          initMatchingGame();
+        }
+      }
+
+      function renderCategoryFilters() {
+        const categories = [
+          "الكل",
+          "الوسوم الأساسية",
+          "وسوم لها وسم إغلاق",
+          "الوسوم ذاتية الإغلاق",
+          "وسم الارتباط الشعبي",
+          "وسم الصور",
+          "وسم القوائم",
+          "وسم الجداول",
+          "التعليقات",
+        ];
+        const container = document.getElementById("categoryFilter");
+        container.innerHTML = categories
+          .map(
+            (cat, idx) => `
+                <button onclick="filterCategory('${cat}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${idx === 0 ? "bg-indigo-600 border-indigo-500 text-white" : "bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700"}">
+                    ${cat}
+                </button>
+            `,
+          )
+          .join("");
+      }
+
+      function filterCategory(cat) {
+        // Update active styling
+        const btns = document.querySelectorAll("#categoryFilter button");
+        btns.forEach((b) => {
+          if (b.innerText.trim() === cat) {
+            b.className =
+              "px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all bg-indigo-600 border-indigo-500 text-white";
+          } else {
+            b.className =
+              "px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700";
+          }
+        });
+
+        if (cat === "الكل") {
+          renderTagsGrid(HTML_DATA);
+        } else {
+          const filtered = HTML_DATA.filter((item) => item.category === cat);
+          renderTagsGrid(filtered);
+        }
+      }
+
+      function renderTagsGrid(items) {
+        const grid = document.getElementById("tagsGrid");
+        grid.innerHTML = items
+          .map(
+            (item) => `
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 hover:border-indigo-500/50 transition-all flex flex-col justify-between space-y-4 group">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium">
+                                ${item.category}
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono">#0${item.catId}</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <code class="text-xl font-mono font-bold text-amber-300 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800 dir-ltr group-hover:text-amber-200 transition-colors">
+                                ${escapeHtml(item.tag)}
+                            </code>
+                            <span class="text-sm font-bold text-emerald-400">${item.translation}</span>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-700/50">
+                            ${item.usage}
+                        </p>
+                    </div>
+
+                    <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-700/40">
+                        <button onclick="openTagModal('${item.id}')" class="text-xs px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg transition-all flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i> التفاصيل والمثال
+                        </button>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function openTagModal(tagId) {
+        const item = HTML_DATA.find((x) => x.id === tagId);
+        if (!item) return;
+
+        document.getElementById("modalCategoryBadge").innerText = item.category;
+        document.getElementById("modalTagName").innerText = item.tag;
+        document.getElementById("modalTagTranslation").innerText =
+          item.translation;
+        document.getElementById("modalTagUsage").innerText = item.usage;
+        document.getElementById("modalTagType").innerText = item.type;
+        document.getElementById("modalTagExample").innerText = item.example;
+
+        document.getElementById("tagModal").classList.remove("hidden");
+      }
+
+      function closeTagModal() {
+        document.getElementById("tagModal").classList.add("hidden");
+      }
+
+      function quickTestInSandbox(tagId) {
+        const item = HTML_DATA.find((x) => x.id === tagId);
+        if (!item) return;
+
+        closeTagModal();
+        switchTab("editor");
+        const editor = document.getElementById("codeEditor");
+        editor.value = `<!DOCTYPE html>\n<html>\n<body>\n  <!-- تجربة وسم ${item.translation} -->\n  ${item.codeSnippet}\n</body>\n</html>`;
+        runCode();
+      }
+
+      function initFlashcards() {
+        currentFlashcardIndex = 0;
+        isCardFlipped = false;
+        updateFlashcardUI();
+      }
+
+      function flipFlashcard() {
+        const card = document.getElementById("flashcardElement");
+        isCardFlipped = !isCardFlipped;
+        if (isCardFlipped) {
+          card.classList.add("rotate-y-180");
+        } else {
+          card.classList.remove("rotate-y-180");
+        }
+      }
+
+      function updateFlashcardUI() {
+        const card = document.getElementById("flashcardElement");
+        card.classList.remove("rotate-y-180");
+        isCardFlipped = false;
+
+        const item = HTML_DATA[currentFlashcardIndex];
+        document.getElementById("flashcardCategory").innerText = item.category;
+        document.getElementById("flashcardTag").innerText = item.tag;
+        document.getElementById("flashcardTranslation").innerText =
+          item.translation;
+        document.getElementById("flashcardUsage").innerText = item.usage;
+        document.getElementById("flashcardTypeBadge").innerText = item.type;
+
+        document.getElementById("flashcardIndexText").innerText =
+          `بطاقة ${currentFlashcardIndex + 1} من ${HTML_DATA.length}`;
+
+        const progress = ((currentFlashcardIndex + 1) / HTML_DATA.length) * 100;
+        document.getElementById("flashcardBar").style.width = `${progress}%`;
+        document.getElementById("flashcardMasteredText").innerText =
+          `تم الحفظ: ${masteredCount}`;
+      }
+
+      function nextFlashcard(known) {
+        if (known) {
+          masteredCount = Math.min(masteredCount + 1, HTML_DATA.length);
+          addPoints(5);
+        }
+        currentFlashcardIndex = (currentFlashcardIndex + 1) % HTML_DATA.length;
+        updateFlashcardUI();
+      }
+
+      function initMatchingGame() {
+        clearInterval(matchingTimerInterval);
+        matchingTimeSeconds = 0;
+        matchingSelectedTag = null;
+        matchingSelectedMeaning = null;
+
+        document.getElementById("matchingTimer").innerText = "00:00";
+        matchingTimerInterval = setInterval(() => {
+          matchingTimeSeconds++;
+          const mins = String(Math.floor(matchingTimeSeconds / 60)).padStart(
+            2,
+            "0",
+          );
+          const secs = String(matchingTimeSeconds % 60).padStart(2, "0");
+          document.getElementById("matchingTimer").innerText =
+            `${mins}:${secs}`;
+        }, 1000);
+
+        // Select 6 random items for matching round
+        const shuffled = [...HTML_DATA]
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 6);
+        const tagsList = [...shuffled];
+        const meaningsList = [...shuffled].sort(() => 0.5 - Math.random());
+
+        const tagsContainer = document.getElementById("matchingTagsList");
+        const meaningsContainer = document.getElementById(
+          "matchingMeaningsList",
+        );
+
+        tagsContainer.innerHTML = tagsList
+          .map(
+            (item) => `
+                <div id="match-tag-${item.id}" onclick="selectMatchingTag('${item.id}')" class="match-item p-3.5 bg-slate-800 border-2 border-slate-700 rounded-xl cursor-pointer hover:border-indigo-500 transition-all flex items-center justify-between">
+                    <code class="text-base font-mono font-bold text-amber-300 dir-ltr">${escapeHtml(item.tag)}</code>
+                    <span class="text-xs text-slate-400">انقر للاختيار</span>
+                </div>
+            `,
+          )
+          .join("");
+
+        meaningsContainer.innerHTML = meaningsList
+          .map(
+            (item) => `
+                <div id="match-meaning-${item.id}" onclick="selectMatchingMeaning('${item.id}')" class="match-item p-3.5 bg-slate-800 border-2 border-slate-700 rounded-xl cursor-pointer hover:border-purple-500 transition-all flex items-center justify-between">
+                    <div class="text-sm font-semibold text-white">${item.translation} - <span class="text-xs text-slate-300 font-normal">${item.usage}</span></div>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function selectMatchingTag(id) {
+        // Remove selection border from tag items
+        document
+          .querySelectorAll("#matchingTagsList .match-item")
+          .forEach((el) => {
+            if (!el.classList.contains("matched")) {
+              el.classList.remove("border-indigo-500", "bg-indigo-950/40");
+              el.classList.add("border-slate-700");
+            }
+          });
+
+        const target = document.getElementById(`match-tag-${id}`);
+        if (target.classList.contains("matched")) return;
+
+        matchingSelectedTag = id;
+        target.classList.remove("border-slate-700");
+        target.classList.add("border-indigo-500", "bg-indigo-950/40");
+
+        checkMatchingPair();
+      }
+
+      function selectMatchingMeaning(id) {
+        document
+          .querySelectorAll("#matchingMeaningsList .match-item")
+          .forEach((el) => {
+            if (!el.classList.contains("matched")) {
+              el.classList.remove("border-purple-500", "bg-purple-950/40");
+              el.classList.add("border-slate-700");
+            }
+          });
+
+        const target = document.getElementById(`match-meaning-${id}`);
+        if (target.classList.contains("matched")) return;
+
+        matchingSelectedMeaning = id;
+        target.classList.remove("border-slate-700");
+        target.classList.add("border-purple-500", "bg-purple-950/40");
+
+        checkMatchingPair();
+      }
+
+      function checkMatchingPair() {
+        if (matchingSelectedTag && matchingSelectedMeaning) {
+          if (matchingSelectedTag === matchingSelectedMeaning) {
+            // Match Success!
+            const tagEl = document.getElementById(
+              `match-tag-${matchingSelectedTag}`,
+            );
+            const meaningEl = document.getElementById(
+              `match-meaning-${matchingSelectedMeaning}`,
+            );
+
+            tagEl.className =
+              "match-item matched p-3.5 bg-emerald-950/60 border-2 border-emerald-500 rounded-xl flex items-center justify-between text-emerald-300";
+            meaningEl.className =
+              "match-item matched p-3.5 bg-emerald-950/60 border-2 border-emerald-500 rounded-xl flex items-center justify-between text-emerald-300";
+
+            tagEl.innerHTML += `<i class="fa-solid fa-check text-emerald-400"></i>`;
+            meaningEl.innerHTML += `<i class="fa-solid fa-check text-emerald-400"></i>`;
+
+            addPoints(10);
+            matchingSelectedTag = null;
+            matchingSelectedMeaning = null;
+
+            // Check if all matched
+            const remaining = document.querySelectorAll(
+              ".match-item:not(.matched)",
+            );
+            if (remaining.length === 0) {
+              clearInterval(matchingTimerInterval);
+              setTimeout(() => {
+                showToast(
+                  `رائع جداً! أنهيت المطابقة بنجاح في وقت قياسي: ${document.getElementById("matchingTimer").innerText}`,
+                  true,
+                );
+              }, 300);
+            }
+          } else {
+            // Match Failed - reset after short delay
+            setTimeout(() => {
+              if (matchingSelectedTag) {
+                const tagEl = document.getElementById(
+                  `match-tag-${matchingSelectedTag}`,
+                );
+                if (tagEl && !tagEl.classList.contains("matched")) {
+                  tagEl.classList.remove(
+                    "border-indigo-500",
+                    "bg-indigo-950/40",
+                  );
+                  tagEl.classList.add("border-slate-700");
+                }
+              }
+              if (matchingSelectedMeaning) {
+                const meaningEl = document.getElementById(
+                  `match-meaning-${matchingSelectedMeaning}`,
+                );
+                if (meaningEl && !meaningEl.classList.contains("matched")) {
+                  meaningEl.classList.remove(
+                    "border-purple-500",
+                    "bg-purple-950/40",
+                  );
+                  meaningEl.classList.add("border-slate-700");
+                }
+              }
+              matchingSelectedTag = null;
+              matchingSelectedMeaning = null;
+            }, 400);
+          }
+        }
+      }
+
+      const MISSIONS = [
+        {
+          id: 1,
+          title: "تحدي 1: الهيكل الأساسي والعنوان",
+          desc: 'اكتب وسم العنوان الرئيسي <h1> لعرض العبارة: "أهلاً بك في صف مدرستي"',
+          initialCode:
+            "<!DOCTYPE html>\n<html>\n<body>\n  <!-- اكتب كودك هنا -->\n  \n</body>\n</html>",
+          validate: (code) =>
+            code.includes("<h1>") &&
+            code.includes("</h1>") &&
+            code.includes("أهلاً بك في صف مدرستي"),
+          hint: "استخدم الوسم <h1>أهلاً بك في صف مدرستي</h1> داخل جسم الصفحة <body>.",
+        },
+        {
+          id: 2,
+          title: "تحدي 2: التنسيقات والأسطر الفاصلة",
+          desc: "أنشئ نصاً غامقاً <b> ونصاً مائلاً <i> وبينهما سطر فاصل <br>",
+          initialCode:
+            "<!DOCTYPE html>\n<html>\n<body>\n  <b>نص عريض</b>\n  <!-- أضف وسم السطر الجديد والخط المائل -->\n</body>\n</html>",
+          validate: (code) =>
+            code.includes("<b>") &&
+            code.includes("<i>") &&
+            code.includes("<br>"),
+          hint: "استخدم <br> للفصل بين النص العريض <b> والخط المائل <i>.",
+        },
+        {
+          id: 3,
+          title: "تحدي 3: القوائم والروابط",
+          desc: "أنشئ قائمة غير مرتبة <ul> تحتوي على عنصرين <li> بالإضافة لـ وسم رابط <a>",
+          initialCode:
+            "<!DOCTYPE html>\n<html>\n<body>\n  <ul>\n    <li>العنصر الأول</li>\n  </ul>\n</body>\n</html>",
+          validate: (code) =>
+            code.includes("<ul>") &&
+            code.includes("<li>") &&
+            code.includes("<a>"),
+          hint: 'أضف عنصر <li> ثانٍ ووسم رابط عادي مثل <a href="#">رابط</a>.',
+        },
+        {
+          id: 4,
+          title: "تحدي 4: الجداول المنسقة",
+          desc: "أنشئ جدولا <table> يحتوي على صف <tr> وعنوان خلية <th> وخلية بيانات <td>",
+          initialCode:
+            "<!DOCTYPE html>\n<html>\n<body>\n  <!-- أنشئ الجدول هنا -->\n</body>\n</html>",
+          validate: (code) =>
+            code.includes("<table>") &&
+            code.includes("<tr>") &&
+            code.includes("<th>") &&
+            code.includes("<td>"),
+          hint: "استخدم الهيكل: <table> <tr> <th>العنوان</th> <td>البيانات</td> </tr> </table>",
+        },
+        {
+          id: 5,
+          title: "تحدي 5: PRE و CAPTION",
+          desc: "استخدم <pre> للمحافظة على تنسيق النص، ثم أضف عنواناً للجدول باستخدام <caption>",
+          initialCode:
+            "<!DOCTYPE html>\n<html>\n<body>\n  <pre>الاسم: __________\nالصف: التاسع</pre>\n  <table border=\"1\">\n    <!-- أضف caption هنا -->\n    <tr><td>HTML</td></tr>\n  </table>\n</body>\n</html>",
+          validate: (code) =>
+            code.includes("<pre>") &&
+            code.includes("<caption>") &&
+            code.includes("<table"),
+          hint: "اكتب عنوان الجدول بين <caption> و </caption> داخل وسم <table>.",
+        },
+      ];
+
+      let currentMissionIndex = 0;
+
+      function renderMissionsList() {
+        const list = document.getElementById("missionsList");
+        if (!list) return;
+        list.innerHTML = MISSIONS.map(
+          (m, idx) => `
+                <button onclick="loadMission(${idx})" class="w-full text-right p-3 rounded-xl border text-xs transition-all ${idx === currentMissionIndex ? "bg-indigo-600/20 border-indigo-500 text-white font-bold" : "bg-slate-900/60 border-slate-800 text-slate-300 hover:bg-slate-800"}">
+                    <div class="flex items-center justify-between">
+                        <span>${m.title}</span>
+                        <i class="fa-solid ${idx === currentMissionIndex ? "fa-circle-dot text-indigo-400" : "fa-circle text-slate-600"}"></i>
+                    </div>
+                </button>
+            `,
+        ).join("");
+      }
+
+      function initMissions() {
+        renderMissionsList();
+        loadMission(0);
+      }
+
+      function loadMission(idx) {
+        currentMissionIndex = idx;
+        const m = MISSIONS[idx];
+        document.getElementById("codeEditor").value = m.initialCode;
+        document.getElementById("missionHintText").innerText = m.hint;
+
+        renderMissionsList();
+        runCode();
+      }
+
+      function runCode() {
+        const code = document.getElementById("codeEditor").value;
+        const iframe = document.getElementById("codePreview");
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        doc.open();
+        doc.write(code);
+        doc.close();
+      }
+
+      function checkMissionResult() {
+        const code = document.getElementById("codeEditor").value;
+        const m = MISSIONS[currentMissionIndex];
+
+        if (m.validate(code)) {
+          addPoints(20);
+          showToast(`إجابة صحيحة وممتازة! أحسنت في حل: ${m.title}`, true);
+          if (currentMissionIndex < MISSIONS.length - 1) {
+            loadMission(currentMissionIndex + 1);
+          }
+        } else {
+          showToast(
+            `تأكد من تطبيق كل الوسوم المطلوبة بشكل صحيح.\nمساعدة: ${m.hint}`,
+            false,
+          );
+        }
+      }
+
+      function showToast(message, isSuccess = true) {
+        const toast = document.getElementById("toast");
+        const toastContent = document.getElementById("toastContent");
+        const toastIcon = document.getElementById("toastIcon");
+        const toastMsg = document.getElementById("toastMessage");
+
+        if (!toast || !toastContent || !toastMsg) return;
+
+        toastMsg.innerText = message;
+        if (isSuccess) {
+          toastContent.className =
+            "px-5 py-3 rounded-xl shadow-2xl border text-sm font-semibold flex items-center gap-3 bg-emerald-950 border-emerald-500 text-emerald-200";
+          toastIcon.className =
+            "fa-solid fa-circle-check text-emerald-400 text-lg";
+        } else {
+          toastContent.className =
+            "px-5 py-3 rounded-xl shadow-2xl border text-sm font-semibold flex items-center gap-3 bg-rose-950 border-rose-500 text-rose-200";
+          toastIcon.className =
+            "fa-solid fa-circle-xmark text-rose-400 text-lg";
+        }
+
+        toast.classList.remove("hidden");
+        setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 4000);
+      }
+
+      const QUIZ_QUESTIONS = [
+        {
+          q: "أي وسم يحافظ على المسافات والأسطر كما كُتبت داخل الكود؟",
+          options: ["<p>", "<pre>", "<br>", "<b>"],
+          answer: 1,
+          explain: "الوسم <pre> يعرض النص مع المحافظة على المسافات والأسطر المكتوبة.",
+        },
+        {
+          q: "ما وظيفة الوسم <caption>؟",
+          options: ["إنشاء صف", "إضافة عنوان للجدول", "دمج الخلايا", "إضافة صورة"],
+          answer: 1,
+          explain: "يوضع <caption> داخل <table> لإضافة عنوان أو تسمية للجدول.",
+        },
+        {
+          q: "أي وسم يمثل عنصراً داخل قائمة مرتبة أو غير مرتبة؟",
+          options: ["<li>", "<tr>", "<td>", "<p>"],
+          answer: 0,
+          explain: "الوسم <li> يستخدم لكل عنصر داخل <ol> أو <ul>.",
+        },
+        {
+          q: "أي صيغة تستخدم لكتابة تعليق لا يظهر في المتصفح؟",
+          options: ["<comment>", "<!-- تعليق -->", "<note>", "<pre>"],
+          answer: 1,
+          explain: "تعليق HTML يكتب بين <!-- و --> ولا يظهر في المحتوى المرئي.",
+        },
+        {
+          q: "ما هو الوسم الذي يحدد العنصر الجذر لصفحة الويب ويحتوي على كافة العناصر؟",
+          options: ["<body>", "<html>", "<head>", "<title>"],
+          answer: 1,
+          explain: "وسم <html> هو الجذر الرئيسي الذي يحتضن كافة أجزاء الصفحة.",
+        },
+        {
+          q: "أي الوسوم التالية تعتبر من الوسوم ذاتية الإغلاق (لا تحتاج إلى وسم إغلاق)؟",
+          options: ["<p>", "<h1>", "<br>", "<i>"],
+          answer: 2,
+          explain:
+            "وسم <br> ووسم <hr> من الوسوم ذاتية الإغلاق التي لا تحتوي على نص داخلي.",
+        },
+        {
+          q: "ما الوسم المناسب لإنشاء فقرة نصية مستقلة؟",
+          options: ["<p>", "<b>", "<i>", "<a>"],
+          answer: 0,
+          explain:
+            "الوسم <p> اختصار لـ Paragraph ويُستخدم لإنشاء الفقرات النصية.",
+        },
+        {
+          q: "لإضافة خط أفق فاصل بين الأقسام في الصفحة نستخدم الوسم:",
+          options: ["<br>", "<hr>", "<tr>", "<th>"],
+          answer: 1,
+          explain:
+            "وسم <hr> اختصار لـ Horizontal Rule ويُرسم به خط فاصل أفقياً.",
+        },
+        {
+          q: 'ما هو الخاصية الأساسية في وسم الصور <img src="..."> التي تصف مسار الصورة؟',
+          options: ["href", "src", "alt", "type"],
+          answer: 1,
+          explain: "الخاصية src اختصار لـ Source وتُحدد مسار أو رابط الصورة.",
+        },
+        {
+          q: "تُستخدم القائمة غير المرتبة المعروضة على هيئة نقاط باستخدام الوسم:",
+          options: ["<ol>", "<ul>", "<li>", "<table>"],
+          answer: 1,
+          explain: "وسم <ul> اختصار لـ Unordered List ويعرض العناصر بنقاط.",
+        },
+        {
+          q: "ما وظيفة الوسم <th> في الجداول؟",
+          options: [
+            "إنشاء صف جديد",
+            "إنشاء خلية بيانات",
+            "عنوان الخلية/العمود",
+            "وسم الجدول الرئيسي",
+          ],
+          answer: 2,
+          explain:
+            "وسم <th> اختصار لـ Table Header ويُستخدم لعناوين الأعمدة بخط عريض.",
+        },
+        {
+          q: "أي وسم يُستخدم لكتابة العناوين الرئيسية بإنشاء خط كبير وعريض؟",
+          options: ["<h1>", "<i>", "<a>", "<head>"],
+          answer: 0,
+          explain: "وسم <h1> هو أكبر وأهم عنوان رئيسي للصفحة.",
+        },
+        {
+          q: 'ما فائدة الخاصية alt في وسم الصورة <img alt="...">؟',
+          options: [
+            "تحديد حجم الصورة",
+            "إظهار نص بديل عند عدم ظهور الصورة",
+            "تغيير لون الصورة",
+            "ربط الصورة بصفحة أخرى",
+          ],
+          answer: 1,
+          explain:
+            "الخاصية alt تُعبر عن النص البديل (Alternative Text) في حال فشل تحمّل الصورة.",
+        },
+        {
+          q: "لربط صفحة بموقع خارجي مثل Google نستخدم وسم الارتباط الشعبي:",
+          options: ['<a href="...">', '<img src="...">', "<p>", "<title>"],
+          answer: 0,
+          explain: "وسم <a> اختصار لـ Anchor وتُحدد الخاصية href عنوان الرابط.",
+        },
+      ];
+
+      function startQuiz() {
+        quizCurrentIndex = 0;
+        quizScore = 0;
+        quizQuestions = [...QUIZ_QUESTIONS].sort(() => 0.5 - Math.random()).slice(0, 10);
+
+        document.getElementById("quizStartCard").classList.add("hidden");
+        document.getElementById("quizResultBox").classList.add("hidden");
+        document.getElementById("quizActiveBox").classList.remove("hidden");
+
+        renderQuizQuestion();
+      }
+
+      function renderQuizQuestion() {
+        const q = quizQuestions[quizCurrentIndex];
+        document.getElementById("quizQuestionCount").innerText =
+          `السؤال ${quizCurrentIndex + 1} من ${quizQuestions.length}`;
+        document.getElementById("quizScoreBadge").innerText =
+          `النقاط: ${quizScore}`;
+        document.getElementById("quizQuestionTitle").innerText = q.q;
+
+        const feedback = document.getElementById("quizFeedback");
+        feedback.classList.add("hidden");
+
+        const nextBtn = document.getElementById("quizNextBtn");
+        nextBtn.classList.add("hidden");
+
+        const container = document.getElementById("quizOptionsContainer");
+        container.innerHTML = q.options
+          .map(
+            (opt, idx) => `
+                <button onclick="submitQuizAnswer(${idx})" class="quiz-opt-btn w-full text-right p-4 rounded-xl bg-slate-900 border border-slate-700 hover:border-indigo-500 font-mono text-sm text-slate-200 transition-all flex items-center justify-between">
+                    <span>${escapeHtml(opt)}</span>
+                    <i class="fa-regular fa-circle text-slate-600"></i>
+                </button>
+            `,
+          )
+          .join("");
+      }
+
+      function submitQuizAnswer(selectedIdx) {
+        const q = quizQuestions[quizCurrentIndex];
+        const buttons = document.querySelectorAll(".quiz-opt-btn");
+        buttons.forEach((b) => (b.disabled = true));
+
+        const feedback = document.getElementById("quizFeedback");
+        feedback.classList.remove("hidden");
+
+        if (selectedIdx === q.answer) {
+          quizScore += 10;
+          addPoints(10);
+          buttons[selectedIdx].className =
+            "w-full text-right p-4 rounded-xl bg-emerald-950/80 border-2 border-emerald-500 font-mono text-sm text-emerald-300 flex items-center justify-between font-bold";
+          feedback.className =
+            "p-4 rounded-xl text-sm leading-relaxed bg-emerald-900/40 border border-emerald-500/50 text-emerald-300";
+          feedback.innerHTML = `<i class="fa-solid fa-circle-check me-2"></i> <strong>إجابة صحيحة!</strong> ${escapeHtml(q.explain)}`;
+        } else {
+          buttons[selectedIdx].className =
+            "w-full text-right p-4 rounded-xl bg-rose-950/80 border-2 border-rose-500 font-mono text-sm text-rose-300 flex items-center justify-between font-bold";
+          buttons[q.answer].className =
+            "w-full text-right p-4 rounded-xl bg-emerald-950/80 border-2 border-emerald-500 font-mono text-sm text-emerald-300 flex items-center justify-between font-bold";
+          feedback.className =
+            "p-4 rounded-xl text-sm leading-relaxed bg-rose-900/40 border border-rose-500/50 text-rose-300";
+          feedback.innerHTML = `<i class="fa-solid fa-circle-xmark me-2"></i> <strong>إجابة خاطئة!</strong> ${escapeHtml(q.explain)}`;
+        }
+
+        document.getElementById("quizNextBtn").classList.remove("hidden");
+      }
+
+      function nextQuestion() {
+        quizCurrentIndex++;
+        if (quizCurrentIndex < quizQuestions.length) {
+          renderQuizQuestion();
+        } else {
+          finishQuiz();
+        }
+      }
+
+      function finishQuiz() {
+        document.getElementById("quizActiveBox").classList.add("hidden");
+        document.getElementById("quizResultBox").classList.remove("hidden");
+
+        const percentage = Math.round(
+          (quizScore / (quizQuestions.length * 10)) * 100,
+        );
+        document.getElementById("quizFinalScore").innerText = `${percentage}%`;
+        document.getElementById("quizFinalCorrect").innerText =
+          `${quizScore / 10} / ${quizQuestions.length}`;
+
+        const badgeIcon = document.getElementById("quizBadgeIcon");
+        const title = document.getElementById("quizResultTitle");
+
+        if (percentage >= 80) {
+          badgeIcon.className =
+            "w-20 h-20 rounded-full flex items-center justify-center mx-auto text-4xl shadow-xl bg-amber-500/20 text-amber-400 border-2 border-amber-500";
+          badgeIcon.innerHTML = `<i class="fa-solid fa-crown"></i>`;
+          title.innerText = "بطل HTML المتميز! 🌟";
+        } else if (percentage >= 50) {
+          badgeIcon.className =
+            "w-20 h-20 rounded-full flex items-center justify-center mx-auto text-4xl shadow-xl bg-indigo-500/20 text-indigo-400 border-2 border-indigo-500";
+          badgeIcon.innerHTML = `<i class="fa-solid fa-medal"></i>`;
+          title.innerText = "أداء جيد جداً! 👍";
+        } else {
+          badgeIcon.className =
+            "w-20 h-20 rounded-full flex items-center justify-center mx-auto text-4xl shadow-xl bg-rose-500/20 text-rose-400 border-2 border-rose-500";
+          badgeIcon.innerHTML = `<i class="fa-solid fa-book-open"></i>`;
+          title.innerText = "تحتاج إلى مراجعة إضافية 📚";
+        }
+      }
+
+      async function sendAiMessage() {
+        const input = document.getElementById("aiInput");
+        const text = input.value.trim();
+        if (!text) return;
+
+        appendChatMessage("user", text);
+        input.value = "";
+
+        const btn = document.getElementById("aiSendBtn");
+        btn.disabled = true;
+
+        // Call Gemini API
+        const systemPrompt = `أنت معلم حاسوب ورقمي لمادة لغة HTML مخصص لطلاب الصف التاسع. 
+اشرح وسوم منهج الصف التاسع: DOCTYPE, html, head, title, body, h1, p, pre, i, b, br, hr, a, img, ol, ul, li, table, caption, tr, td, th، وتعليقات HTML <!-- -->.
+اجعل إجاباتك ودودة، مبسطة جداً، قصيرة ومباشرة، واستخدم إيموجي مشجعة.`;
+
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        try {
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: text }] }],
+              systemInstruction: { parts: [{ text: systemPrompt }] },
+            }),
+          });
+
+          const result = await response.json();
+          const aiText =
+            result.candidates?.[0]?.content?.parts?.[0]?.text ||
+            "عذراً يا بطل، حدث خطأ بسيط أثناء الاتصال بالمعلم الذكي. حاول مجدداً!";
+          appendChatMessage("model", aiText);
+        } catch (err) {
+          appendChatMessage(
+            "model",
+            "تأكد من الاتصال بالإنترنت حاول مجدداً يا بطل!",
+          );
+        } finally {
+          btn.disabled = false;
+        }
+      }
+
+      function sendQuickPrompt(promptText) {
+        document.getElementById("aiInput").value = promptText;
+        sendAiMessage();
+      }
+
+      function appendChatMessage(role, text) {
+        const history = document.getElementById("chatHistory");
+        const msgDiv = document.createElement("div");
+
+        if (role === "user") {
+          msgDiv.className = "flex items-start gap-2.5 justify-end";
+          msgDiv.innerHTML = `
+                    <div class="bg-purple-600 text-white p-3 rounded-2xl rounded-tl-none max-w-lg leading-relaxed text-xs sm:text-sm">
+                        ${escapeHtml(text)}
+                    </div>
+                    <div class="w-7 h-7 rounded-full bg-slate-700 text-slate-300 flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                `;
+        } else {
+          msgDiv.className = "flex items-start gap-2.5";
+          msgDiv.innerHTML = `
+                    <div class="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tr-none max-w-lg leading-relaxed text-xs sm:text-sm whitespace-pre-wrap">
+                        ${text}
+                    </div>
+                `;
+        }
+
+        history.appendChild(msgDiv);
+        history.scrollTop = history.scrollHeight;
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+    </script>
+
+    <footer class="border-t border-slate-800 bg-slate-950/70 py-5 px-4 text-center text-xs text-slate-400">
+      <p class="font-bold text-slate-200">مدرسة هاجر المتوسطة بنات · مادة الحاسوب · الصف التاسع المتوسط</p>
+      <p class="mt-1">إعداد المعلمة: <span class="text-indigo-300 font-bold">وسام مخلوف</span></p>
+    </footer>
+  </body>
+</html>
